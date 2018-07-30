@@ -3,7 +3,7 @@ var browserSync = require('browser-sync').create();
 var less = require('gulp-less');
 var sass = require('gulp-sass');
 
-gulp.task('server', ['sass'], function() {
+gulp.task('server', ['less'], function() {
     browserSync.init({
     	server: { baseDir: './app/'}
     });
@@ -15,13 +15,6 @@ gulp.task('server', ['sass'], function() {
 gulp.task('less', function() {
     return gulp.src('./app/less/**/*.less')
     .pipe(less())
-    .pipe(gulp.dest('./app/css'))
-    .pipe(browserSync.stream());
-});
-
-gulp.task('sass', function() {
-    return gulp.src('./app/sass/**/*.scss')
-    .pipe(sass())
     .pipe(gulp.dest('./app/css'))
     .pipe(browserSync.stream());
 });
